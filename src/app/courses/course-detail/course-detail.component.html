@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="card" *ngIf="course">
+    <div class="card-header">
+      {{pageTitle + ': ' + course.courseName}}
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-4">Name:</div>
+            <div class="col-md-8">{{course.courseName}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">Code:</div>
+            <div class="col-md-8">{{course.courseCode | lowercase | convertToSpaces: '-'}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">Description:</div>
+            <div class="col-md-8">{{course.description}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">Availability:</div>
+            <div class="col-md-8">{{course.releaseDate}}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">Price:</div>
+            <div class="col-md-8">{{ course.price | currency: 'INR':'symbol':'1.2-2' }}</div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">5 Star Rating:</div>
+            <div class="col-md-8">
+              <app-star [rating]="course.starRating"></app-star>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <img [src]="course.imageUrl" [alt]="course.courseName" [style.borderRadius.px]="2" />
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-outline-secondary" (click)="onBack()">
+        <i class="fa fa-chevron-left"></i> Back
+      </button>
+    </div>
+  </div>
+</div>
