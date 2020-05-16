@@ -1,5 +1,5 @@
 export interface ICourse {
-  courseId: number;
+  id: number;
   courseName: string;
   courseCode: string;
   releaseDate: string;
@@ -7,4 +7,5 @@ export interface ICourse {
   description: string;
   starRating: number;
   imageUrl: string;
+  tags?: string[];
 }

@@ -29,6 +29,7 @@
               <th>Available</th>
               <th>Price</th>
               <th>5 Star Rating</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -36,17 +37,24 @@
               <td><img [src]="course.imageUrl" [alt]="course.courseName" [style.borderRadius.px]="imageBorderRadius"
                   *ngIf="showCourseImage" />
               </td>
-              <td><a [routerLink]="['/courses',course.courseId]">{{ course.courseName }}</a></td>
+              <td><a [routerLink]="['/courses',course.id]">{{ course.courseName }}</a></td>
               <td>{{ course.courseCode | lowercase | convertToSpaces: '-' }}</td>
               <td>{{ course.releaseDate }}</td>
               <td>{{ course.price | currency: 'INR':'symbol':'1.2-2' }}</td>
               <td>
                 <app-star [rating]="course.starRating" (ratingClicked)="onRatingClicked($event)"></app-star>
               </td>
+              <td>
+                <button class="btn btn-outline-primary btn-sm"
+                  [routerLink]="['/courses',course.id,'edit']">Edit</button>
+              </td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
+  </div>
+  <div class="alert alert-danger mt-4" *ngIf="errorMessage">
+    {{errorMessage}}
   </div>
 </div>
